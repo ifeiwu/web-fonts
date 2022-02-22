@@ -86,7 +86,7 @@ for /d %%d in (*) do (
             
             set csscontent=@font-face{font-family:''%%d'';src:url^(''!filename!.woff2''^) format^(''woff2''^);font-weight:!font_weight!;font-style:normal;font-display:swap;}
             
-            pwsh -Command "'!csscontent!' | Out-File ('!cssfile!') -Encoding utf8NoBOM"
+            pwsh -Command "'!csscontent!' | Out-File -Append ('!cssfile!') -Encoding utf8NoBOM"
         )
     )
 )
