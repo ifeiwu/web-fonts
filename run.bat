@@ -14,7 +14,7 @@ set /p num=请输入编号：
 
 set end_msg=网页字体转换完成，请在 web 目录下查看。
 
-set text_file=zh-cn-2000
+set text_file=zh-cn-3500
 
 if /i "!num!"=="2" (
 	set text_file=zh-cn-7000
