@@ -1,2 +1,7 @@
 
-TTC to TTF: https://transfonter.org/ttc-unpack
+TTC to TTF:
+https://transfonter.org/ttc-unpack
+
+OTF to TTF:
+https://cloudconvert.com/otf-to-ttf
+https://convertio.co/zh/otf-ttf/

@@ -8,3 +8,6 @@ HarmonyOS Sans: https://developer.harmonyos.com/cn/docs/design/des-guides/font-0
 MiSans: https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854&app_version=dev.20051&ref=MIUI13
 
 OPPO Sans: https://open.oppomobile.com/bbs/forum.php?mod=viewthread&tid=2274
+
+
+思源字体: https://github.com/Pal3love/Source-Han-TrueType
