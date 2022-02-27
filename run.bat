@@ -7,7 +7,6 @@ echo    请输入压缩字体转网页字体：
 echo      1、3500 汉字(简体中文) - 默认
 echo      2、7000 汉字(简体中文)
 echo      3、2000 汉字(简体中文)
-echo      4、2000 汉字(繁体中文)
 echo.
 
 set /p num=请输入编号：
@@ -20,8 +19,6 @@ if /i "!num!"=="2" (
 	set text_file=zh-cn-7000
 ) else if /i "!num!"=="3" (
 	set text_file=zh-cn-2000
-) else if /i "!num!"=="4" (
-	set text_file=zh-tw-2000
 )
 
 echo.
@@ -54,6 +51,8 @@ for /d %%d in (*) do (
         for /f "delims=" %%f in ('dir /b /a-d "*.ttf"') do (
             
             set filename=%%~nf
+            
+            set font_weight=400
             
             if not "!filename:-Heavy=!"=="!filename!" (
                 set font_weight=900
