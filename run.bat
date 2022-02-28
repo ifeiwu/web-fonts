@@ -4,21 +4,27 @@ setLocal EnableDelayedExpansion
 
 echo.
 echo    请输入压缩字体转网页字体：
-echo      1、3500 汉字(简体中文) - 默认
-echo      2、7000 汉字(简体中文)
-echo      3、2000 汉字(简体中文)
+echo      1、3700 汉字(简体) - 默认
+echo      2、3500 汉字(简体)
+echo      3、2000 汉字(简体)
+echo      4、7000 汉字(简体)
+echo      5、5000 汉字(简繁)
 echo.
 
 set /p num=请输入编号：
 
 set end_msg=网页字体转换完成，请在 web 目录下查看。
 
-set text_file=zh-cn-3500
+set text_file=zh-cn-3700
 
 if /i "!num!"=="2" (
-	set text_file=zh-cn-7000
+	set text_file=zh-cn-3500
 ) else if /i "!num!"=="3" (
 	set text_file=zh-cn-2000
+) else if /i "!num!"=="4" (
+	set text_file=zh-cn-7000
+) else if /i "!num!"=="5" (
+	set text_file=zh-cn-tw-5000
 )
 
 echo.

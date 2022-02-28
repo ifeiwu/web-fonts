@@ -5,3 +5,4 @@ https://transfonter.org/ttc-unpack
 OTF to TTF:
 https://cloudconvert.com/otf-to-ttf
 https://convertio.co/zh/otf-ttf/
+https://anyconv.com/otf-to-ttf-converter/
