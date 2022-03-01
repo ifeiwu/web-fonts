@@ -9,6 +9,7 @@ echo      2、3500 汉字(简体)
 echo      3、2000 汉字(简体)
 echo      4、7000 汉字(简体)
 echo      5、5000 汉字(简繁)
+echo      6、英文
 echo.
 
 set /p num=请输入编号：
@@ -16,6 +17,9 @@ set /p num=请输入编号：
 set end_msg=网页字体转换完成，请在 web 目录下查看。
 
 set text_file=zh-cn-3700
+
+set font_src_lang=zh
+set font_min_lang=zh-cn
 
 if /i "!num!"=="2" (
 	set text_file=zh-cn-3500
@@ -25,15 +29,20 @@ if /i "!num!"=="2" (
 	set text_file=zh-cn-7000
 ) else if /i "!num!"=="5" (
 	set text_file=zh-cn-tw-5000
+) else if /i "!num!"=="6" (
+	set font_src_lang=en
+	set font_min_lang=en
 )
 
-echo.
-echo 导入文件 !text_file!.txt
-echo.
+if not "!font_src_lang!"=="en" (
+    echo.
+    echo 导入文件 !text_file!.txt
+    echo.
+)
 
 set root_dir=%~dp0
 
-cd font-src
+cd font-src\%font_src_lang%
 
 for /d %%d in (*) do (
 
@@ -41,18 +50,19 @@ for /d %%d in (*) do (
 
     for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do call set lower_dir=%%lower_dir:%%i=%%i%%
     
-    set fontmin_dir="%root_dir%font-min\!lower_dir!"
+    set fontmin_dir="%root_dir%font-min\%font_min_lang%\!lower_dir!"
+    
 	if not exist "!fontmin_dir!" (
     
         md "!fontmin_dir!"
         
-        set web_dir="%root_dir%web\!lower_dir!"
+        set web_dir="%root_dir%css\!lower_dir!"
         
         if exist "!web_dir!" rd /s /q "!web_dir!"
         
         md "!web_dir!"
         
-        cd %root_dir%font-src\%%d
+        cd %root_dir%font-src\%font_src_lang%\%%d
         
         for /f "delims=" %%f in ('dir /b /a-d "*.ttf"') do (
             
@@ -86,11 +96,11 @@ for /d %%d in (*) do (
                 set font_weight=100
             )
             
-            pyftsubset %root_dir%font-src\%%d\%%~nf.ttf --output-file=%root_dir%font-min\%%d\%%~nf.ttf --text-file=%root_dir%!text_file!.txt --no-hinting
+            pyftsubset %root_dir%font-src\%font_src_lang%\%%d\%%~nf.ttf --output-file=%root_dir%font-min\%font_min_lang%\%%d\%%~nf.ttf --text-file=%root_dir%!text_file!.txt --no-hinting
             
-            fonttools ttLib.woff2 compress -o "%root_dir%web\!lower_dir!\%%~nf.woff2" "%root_dir%font-min\!lower_dir!\%%~nf.ttf"
+            fonttools ttLib.woff2 compress -o "%root_dir%css\!lower_dir!\%%~nf.woff2" "%root_dir%font-min\%font_min_lang%\!lower_dir!\%%~nf.ttf"
             
-            set cssfile=%root_dir%web\!lower_dir!\!lower_dir!.css
+            set cssfile=%root_dir%css\!lower_dir!\!lower_dir!.css
             
             set csscontent=@font-face{font-family:''%%d'';src:url^(''!filename!.woff2''^) format^(''woff2''^);font-weight:!font_weight!;font-style:normal;font-display:swap;}
             
