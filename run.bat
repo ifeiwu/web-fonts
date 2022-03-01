@@ -29,6 +29,8 @@ if /i "!num!"=="2" (
 	set text_file=zh-cn-7000
 ) else if /i "!num!"=="5" (
 	set text_file=zh-cn-tw-5000
+    set font_src_lang=zh
+    set font_min_lang=zh-cn-tw
 ) else if /i "!num!"=="6" (
 	set font_src_lang=en
 	set font_min_lang=en
