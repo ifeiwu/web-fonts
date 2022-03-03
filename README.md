@@ -5,12 +5,12 @@
 ## 1.快速使用
 ##### 在 web 目录下选择要使用的字体，替换下面的 **字体目录** 和 **字体样式**
 ```
-https://cdn.jsdelivr.net/gh/ifeiwu/web-fonts/web/字体目录/字体样式.css
+https://cdn.jsdelivr.net/gh/ifeiwu/web-fonts/css/字体目录/字体样式.css
 ```
 ##### 添加到页面
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/ifeiwu/web-fonts/web/misans/misans.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/ifeiwu/web-fonts/css/misans/misans.css" rel="stylesheet">
 ```
 
 ## 2.下载使用
