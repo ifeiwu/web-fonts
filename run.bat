@@ -3,7 +3,7 @@
 setLocal EnableDelayedExpansion
 
 echo.
-echo    请输入压缩字体转网页字体：
+echo    请输入要压缩网页字体的字数：
 echo      1、英文
 echo      2、500 汉字(简体)
 echo      3、1000 汉字(简体)
@@ -19,7 +19,7 @@ echo.
 
 set /p num=请输入编号：
 
-set end_msg=网页字体转换完成，请在 web 目录下查看。
+set end_msg=网页字体转换完成，请在 css 目录下查看。
 
 set font_src_lang=zh
 set text_lang=zh-cn
