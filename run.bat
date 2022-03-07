@@ -4,39 +4,51 @@ setLocal EnableDelayedExpansion
 
 echo.
 echo    请输入压缩字体转网页字体：
-echo      1、3700 汉字(简体) - 默认
-echo      2、3500 汉字(简体)
-echo      3、2000 汉字(简体)
-echo      4、7000 汉字(简体)
-echo      5、5000 汉字(简繁)
-echo      6、英文
+echo      1、英文
+echo      2、500 汉字(简体)
+echo      3、1000 汉字(简体)
+echo      4、1500 汉字(简体)
+echo      5、2000 汉字(简体) - 默认
+echo      6、2500 汉字(简体)
+echo      7、3000 汉字(简体)
+echo      8、3500 汉字(简体)
+echo      9、4000 汉字(简体)
+echo      10、5000 汉字(简体)
+echo      11、7000 汉字(简体)
 echo.
 
 set /p num=请输入编号：
 
 set end_msg=网页字体转换完成，请在 web 目录下查看。
 
-rem set text_file=zh-cn-3700
-set text_lang=zh-cn
-set text_word=3700
-
-
 set font_src_lang=zh
+set text_lang=zh-cn
+set text_word=2000
 
-if /i "!num!"=="2" (
-    set text_lang=zh-cn
-    set text_word=3500
+if /i "!num!"=="1" (
+    set font_src_lang=en
+    set text_lang=en
+    set text_word=
+) else if /i "!num!"=="2" (
+    set text_word=500
 ) else if /i "!num!"=="3" (
-    set text_lang=zh-cn
-    set text_word=2000
+    set text_word=1000
 ) else if /i "!num!"=="4" (
-    set text_lang=zh-cn
-    set text_word=7000
+    set text_word=1500
 ) else if /i "!num!"=="5" (
-    set text_lang=zh-cn-tw
-    set text_word=5000
+	set text_word=2000
 ) else if /i "!num!"=="6" (
-	set font_src_lang=en
+	set text_word=2500
+) else if /i "!num!"=="7" (
+	set text_word=3000
+) else if /i "!num!"=="8" (
+	set text_word=3500
+) else if /i "!num!"=="9" (
+	set text_word=4000
+) else if /i "!num!"=="10" (
+	set text_word=5000
+) else if /i "!num!"=="11" (
+	set text_word=7000
 )
 
 set text_file=!text_lang!-!text_word!
@@ -49,6 +61,11 @@ if not "!font_src_lang!"=="en" (
 
 set root_dir=%~dp0
 set fontsrc_dir=!root_dir!font-src\!font_src_lang!
+set text_word_dir=!text_word!\!text_lang!
+
+if /i "!text_lang!"=="en" (
+    set text_word_dir=en
+)
 
 cd !fontsrc_dir!
 
@@ -57,8 +74,8 @@ for /d %%d in (*) do (
     set lower_dir=%%d
 
     for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do call set lower_dir=%%lower_dir:%%i=%%i%%
-
-    set css_dir="!root_dir!css\!text_word!\!text_lang!\!lower_dir!"
+    
+    set css_dir="!root_dir!css\!text_word_dir!\!lower_dir!"
     
 	if not exist "!css_dir!" (
     
